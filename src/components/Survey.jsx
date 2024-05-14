@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useState } from "react"
 
-import AnswersList from "./AnswersList";
-import AnswersItem from "./AnswersItem";
+import AnswersList from "./AnswersList"
+import AnswersItem from "./AnswersItem"
 
 function Survey() {
-  const [open, setOpen] = useState(false); //Ignore this state
+  const [open, setOpen] = useState(false) //Ignore this state
 
   const [originForm, setoriginForm] = useState({
     color: "",
@@ -12,41 +12,41 @@ function Survey() {
     review: "",
     username: "",
     email: "",
-  });
+  })
 
-  const firstQuestion = ["1", "2", "3", "4"];
+  const firstQuestion = ["1", "2", "3", "4"]
 
   const secondQuestion = [
     { value: "swimming", label: "Swimming" },
     { value: "bathing", label: "Bathing" },
     { value: "chatting", label: "Chatting" },
     { value: "noTime", label: "I don't like to spend time with it" },
-  ];
+  ]
 
   const newonChange = (event) => {
-    const { name, type, value, checked } = event.target;
-    console.log(name, type, value, checked);
+    const { name, type, value, checked } = event.target
+    console.log(name, type, value, checked)
     if (name !== undefined) {
       if (type === "checkbox") {
         if (checked) {
           setoriginForm({
             ...originForm,
             spendTime: [...originForm.spendTime, value],
-          });
+          })
         } else {
           setoriginForm({
             ...originForm,
             spendTime: originForm.spendTime.filter((item) => item !== value),
-          });
+          })
         }
       } else {
-        setoriginForm({ ...originForm, [name]: value });
+        setoriginForm({ ...originForm, [name]: value })
       }
     }
-  };
+  }
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
     console.log(
       "originForm" + originForm.color,
@@ -54,8 +54,8 @@ function Survey() {
       originForm.review,
       originForm.username,
       originForm.email
-    );
-  };
+    )
+  }
   return (
     <main className="survey">
       <section className={`survey__list ${open ? "open" : ""}`}>
@@ -136,7 +136,7 @@ function Survey() {
         </form>
       </section>
     </main>
-  );
+  )
 }
 
-export default Survey;
+export default Survey
